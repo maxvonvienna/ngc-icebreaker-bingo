@@ -9,10 +9,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Set up Fonts
         uses: fontist/setup-fontist@v2
-      - run: fontist update
-      - run: |
-          fontist install "source_sans_3"
-          fontist install "space_grotesk"
+      - run: fontist manifest install manifest.yml
       - name: Set up Typst
         uses: typst-community/setup-typst@v5
       - run: |
