@@ -9,6 +9,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Set up Fonts
         uses: fontist/setup-fontist@v2
+      - run: fontist update
       - run: |
           fontist install "source_sans_3"
           fontist install "space_grotesk"
