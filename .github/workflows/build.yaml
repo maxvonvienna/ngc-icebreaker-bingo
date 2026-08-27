@@ -6,8 +6,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-      - name: Typst
-        uses: lvignoli/typst-action@main
+        uses: actions/checkout@v4
+      - name: Set up Fonts
+        uses: fontist/setup-fontist@v2
+      - run: |
+          fontist install "source_sans_3"
+          fontist install "space_grotesk"
+      - name: Set up Typst
+        uses: typst-community/setup-typst@v5
+      - run: |
+         typst fonts --font-path ~/.fontist/fonts
+         typst compile bingo.typ bingo.pdf --font-path ~/.fontist/fonts
+      - name: Upload PDF
+        uses: actions/upload-artifact@v4
         with:
-          source_file: bingo.typ
+          name: PDF
+          path: bingo.pdf

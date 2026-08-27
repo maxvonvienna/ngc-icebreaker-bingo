@@ -1,2 +1,0 @@
-- name: Github Action for Typst
-  uses: lvignoli/typst-action@v0.1
