@@ -1,4 +1,4 @@
-# ngc-icebreakter-bingo
+# ngc-icebreaker-bingo
 A Typst template for Icebreaker Bingo for our NGC social events
 
 ## Compiling the pdf
