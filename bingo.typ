@@ -10,7 +10,7 @@ You can use each person’s name only once, so choose carefully!"
 
 #set page(
   paper: "a5",
-  margin: (x: 0.7cm, y: 1.8cm)
+  margin: (x: 0.7cm, y: 1.5cm)
   )
 
 #set text(font: "Source Sans 3")
@@ -28,16 +28,8 @@ You can use each person’s name only once, so choose carefully!"
   ]
 )
 
-#let free-cell = block(
-  width: cell-size, 
-  height: cell-size, 
-  inset: 7pt,
-  image("logomark.png", width: 100%)
-)
-
 #let bingo-card(prompts) = {
   let cells = prompts.map(p => prompt-cell(p))
-  cells.insert(12, free-cell)
   grid(columns: 5, rows: 5, column-gutter: 3pt, row-gutter: 3pt, ..cells)
 }
 
@@ -49,13 +41,12 @@ You can use each person’s name only once, so choose carefully!"
 #let make-card(seed) = {
   let rng = gen-rng-f(seed)    // fresh RNG per card
   let (_, shuffled) = shuffle-f(rng, pool)
-  let picked = shuffled.slice(0, 24) // 24 distinct prompts
+  let picked = shuffled.slice(0, 25) // 25 distinct prompts
   
 
   align(left)[
     #stack(dir: ltr, spacing: 2pt,)[
       #stack(dir: ttb)[
-        #box(image("logotype.png", width: 2cm)) 
         #text(size: 22pt, font: "Space Grotesk", weight: "bold")[#title]
         #v(2pt)
         #text(size: 12pt)[#subtitle]
